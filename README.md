@@ -11,9 +11,9 @@ SRS Player是一个音视频播放器插件，可以支持直播协议HLS/HTTP-F
 
 最后，新建一个博客文件，在文章中插入简码：
 
-* HLS流: `[srs_player url="https://your_droplet_ip/live/livestream.m3u8"]`
-* WebRTC流: `[srs_player url="webrtc://your_droplet_ip/live/livestream"]`
-* HTTP-FLV流: `[srs_player url="https://your_droplet_ip/live/livestream.flv"]`
+* HLS流: `[srs_player url="https://your_server_ip/live/livestream.m3u8"]`
+* WebRTC流: `[srs_player url="webrtc://your_server_ip/live/livestream"]`
+* HTTP-FLV流: `[srs_player url="https://your_server_ip/live/livestream.flv"]`
 
 若有问题请加SRS的微信群[SRS](https://github.com/ossrs/srs)。
 
