@@ -1,6 +1,6 @@
 <?php
 
-define( 'SRS_PLAYER_VERSION', '1.0.0' );
+define( 'SRS_PLAYER_VERSION', '1.0.1' );
 
 /**
  * SRS Player is a video streaming player, supports HLS/HTTP-FLV/WebRTC etc.
