@@ -7,7 +7,7 @@ SRS Player是一个音视频播放器插件，可以支持直播协议HLS/HTTP-F
 首先，你得有一个直播流或者点播文件。很简单的，可以一键操作，建议用[SRS云服务器](https://ossrs.net/lts/blog/2022/04/09/SRS-Cloud-Tutorial)
 一键创建自己的直播服务器，并开始推流，这样就有了自己的直播流了。
 
-然后，需要在Typecho中安装SrsPlayer插件，请参考下面的[安装](#install)步骤，并在后台启用SrsPlayer插件。
+然后，需要在Typecho中安装SrsPlayer插件，请参考下面的[安装](#install)步骤，并在后台`控制台 > 插件`启用SrsPlayer插件。
 
 最后，新建一个博客文件，在文章中插入简码：
 
@@ -34,10 +34,10 @@ rm -rf Typecho-Plugin-SrsPlayer-main main.zip
 
 **手动下载**: 
 
-https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/latest
-https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/tag/v1.0.1
-https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/download/v1.0.1/SrsPlayer.zip
-https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/latest/download/SrsPlayer.zip
+手动从[GitHub](https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/latest/download/SrsPlayer.zip)，
+或者从[Gitee](https://gitee.com/ossrs/Typecho-Plugin-SrsPlayer/tags)，选择需要下载的附件。
+
+解压后，将`SrsPlayer`文件夹，上传到Typecho的`typecho/usr/plugins`目录。
 
 Winlin 2022
 
