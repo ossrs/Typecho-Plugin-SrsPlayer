@@ -1,13 +1,13 @@
 <?php
 
-define( 'SRS_PLAYER_VERSION', '1.0.2' );
+define( 'SRS_PLAYER_VERSION', '1.0.3' );
 
 /**
  * SRS Player is a video streaming player, supports HLS/HTTP-FLV/WebRTC etc.
  *
  * @package SrsPlayer
  * @author Winlin Yang
- * @version 1.0.2
+ * @version 1.0.3
  * @link https://github.com/ossrs/Typecho-Plugin-SrsPlayer
  */
 class SrsPlayer_Plugin implements Typecho_Plugin_Interface
