@@ -21,10 +21,23 @@ SRS Player是一个音视频播放器插件，可以支持直播协议HLS/HTTP-F
 
 由于Typecho不支持上传压缩包，也没有插件市场，所以安装插件会麻烦些。
 
-若你喜欢命令行方式，可以登录服务器后，一键执行下面的命令安装：
+**命令行**：若你喜欢命令行方式，可以登录服务器后，一键执行下面的命令安装：
 
 ```bash
+cd typecho/usr/plugins
+curl -L -O https://gitee.com/ossrs/Typecho-Plugin-SrsPlayer/repository/archive/main.zip
+unzip -q main.zip
+rm -rf SrsPlayer
+mv Typecho-Plugin-SrsPlayer-main/SrsPlayer .
+rm -rf Typecho-Plugin-SrsPlayer-main main.zip
 ```
+
+**手动下载**: 
+
+https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/latest
+https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/tag/v1.0.1
+https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/download/v1.0.1/SrsPlayer.zip
+https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/latest/download/SrsPlayer.zip
 
 Winlin 2022
 

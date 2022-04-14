@@ -20,7 +20,7 @@ VERSION="1.0.$NEXT" &&
 TAG="v$VERSION" &&
 echo "publish VERSION=$VERSION, TAG=$TAG"
 
-cat SrsPlayer/Plugin.php |sed "s/version 1.*/version $VERSION/g" > tmp.txt && mv tmp.txt SrsPlayer/SrsPlayer.php &&
+cat SrsPlayer/Plugin.php |sed "s/version 1.*/version $VERSION/g" > tmp.txt && mv tmp.txt SrsPlayer/Plugin.php &&
 cat SrsPlayer/Plugin.php |sed "s/define( 'SRS_PLAYER_VERSION', '1.*/define( 'SRS_PLAYER_VERSION', '$VERSION' );/g" > tmp.txt && mv tmp.txt SrsPlayer/Plugin.php
 if [[ $? -ne 0 ]]; then echo "Change release failed"; exit 1; fi
 
@@ -31,5 +31,9 @@ git push
 git tag -d $TAG 2>/dev/null && git push origin :$TAG
 git tag $TAG
 git push origin $TAG
+
+git push gitee
+git push gitee $TAG
+
 echo "publish $TAG ok"
 echo "    https://github.com/ossrs/Typecho-Plugin-SrsPlayer/actions"
