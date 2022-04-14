@@ -1,0 +1,73 @@
+name: "Release"
+
+# @see https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
+on:
+  push:
+    tags:
+      - v1*
+
+jobs:
+  plugin:
+    name: release-plugin
+    runs-on: ubuntu-20.04
+
+    steps:
+      ##################################################################################################################
+      ##################################################################################################################
+      ##################################################################################################################
+      # Git checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # The github.ref is, for example, refs/tags/v5.0.145 or refs/tags/v5.0-r8
+      # Generate variables like:
+      #   SRS_TAG=v5.0-r8
+      #   SRS_TAG=v5.0.145
+      # @see https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-environment-variable
+      - name: Generate varaiables
+        run: |
+          SRS_TAG=$(echo ${{ github.ref }}| awk -F '/' '{print $3}')
+          echo "SRS_TAG=$SRS_TAG" >> $GITHUB_ENV
+
+      ##################################################################################################################
+      ##################################################################################################################
+      ##################################################################################################################
+      # Create source tar for release. Note that it's for OpenWRT package srs-server, so the filename MUST be
+      # srs-server-xxx.tar.gz, because the package is named srs-server.
+      # Generate variables like:
+      #   SRS_SOURCE_TAR=SrsPlayer.zip
+      #   SRS_SOURCE_MD5=83e38700a80a26e30b2df054e69956e5
+      - name: Create source tar.gz
+        run: |
+          DEST_DIR=SrsPlayer && mkdir -p $DEST_DIR &&
+          zip -q -r ${DEST_DIR}.zip ${DEST_DIR} && du -sh ${DEST_DIR}* &&
+          echo "SRS_SOURCE_TAR=${DEST_DIR}.zip" >> $GITHUB_ENV &&
+          echo "SRS_SOURCE_MD5=$(md5sum ${DEST_DIR}.zip| awk '{print $1}')" >> $GITHUB_ENV
+
+      # Create release.
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            [${{ github.event.head_commit.message }}](https://github.com/ossrs/Typecho-Plugin-SrsPlayer/commit/${{ github.sha }})
+            ## Resource
+            * Source: ${{ env.SRS_SOURCE_MD5 }} [${{ env.SRS_SOURCE_TAR }}](https://github.com/ossrs/Typecho-Plugin-SrsPlayer/releases/download/${{ env.SRS_TAG }}/${{ env.SRS_SOURCE_TAR }})
+            ## Doc
+            * [Usage](https://github.com/ossrs/Typecho-Plugin-SrsPlayer/blob/${{ github.sha }}/README.md)
+          draft: false
+          prerelease: false
+
+      # Upload release source files
+      - name: Upload Release Assets Source
+        id: upload-release-assets-source
+        uses: dwenegar/upload-release-assets@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
+          assets_path: ${{ env.SRS_SOURCE_TAR }}
