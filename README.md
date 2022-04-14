@@ -24,13 +24,13 @@ SRS Player是一个音视频播放器插件，可以支持直播协议HLS/HTTP-F
 **命令行**：若你喜欢命令行方式，可以登录服务器后，一键执行下面的命令安装：
 
 ```bash
-cd typecho/usr/plugins
-curl -L -O https://gitee.com/ossrs/Typecho-Plugin-SrsPlayer/repository/archive/main.zip
-unzip -q main.zip
-rm -rf SrsPlayer
-mv Typecho-Plugin-SrsPlayer-main/SrsPlayer .
+cd /usr/local/lighthouse/softwares/typecho/usr/plugins &&
+curl -L -O https://gitee.com/ossrs/Typecho-Plugin-SrsPlayer/repository/archive/main.zip &&
+unzip -q main.zip && rm -rf SrsPlayer && mv Typecho-Plugin-SrsPlayer-main/SrsPlayer .  &&
 rm -rf Typecho-Plugin-SrsPlayer-main main.zip
 ```
+
+> Note: 这里的路径`/usr/local/lighthouse/softwares/typecho/usr/plugins`，是[LightHouse镜像安装Typecho](https://cloud.tencent.com/document/product/1207/52701)的路径，若不同请改成你的路径。
 
 **手动下载**: 
 
