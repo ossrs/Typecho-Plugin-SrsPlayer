@@ -1,5 +1,7 @@
 # Typecho-Plugin-SrsPlayer
 
+It's rarely used, so won't support it in future.
+
 SRS Player是一个音视频播放器插件，可以支持直播协议HLS/HTTP-FLV/WebRTC等，还可以播放点播的MP4和HLS地址。
 
 ## Usage
